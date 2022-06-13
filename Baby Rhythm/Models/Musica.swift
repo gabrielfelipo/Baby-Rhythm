@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+class Musica {
+    let titulo: String;
+    
+    init(titulo:String)
+    {
+        self.titulo = titulo
+    }
+}

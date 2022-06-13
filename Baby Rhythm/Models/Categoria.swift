@@ -11,12 +11,12 @@ import UIKit
 class Categoria {
     let titulo: String;
     let descricao: String;
-    let imagem: String;
+    let cor: UIColor;
     
-    init(titulo: String, descricao: String, imagem: String)
+    init(titulo: String, descricao: String, cor: UIColor)
     {
         self.titulo = titulo
         self.descricao = descricao
-        self.imagem = imagem
+        self.cor = cor
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var categorias: UILabel!
@@ -24,15 +24,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.topAnchor.constraint(equalTo: categorias.bottomAnchor, constant: 8).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.view.leftAnchor, constant: UIScreen.main.bounds.width-16).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
     }
     
     
-    let categoria: [Categoria] = [Categoria(titulo: "Calma", descricao: "Playlist ideal para acalmar seu bebê, indicada para horários próximos ao do sono", cor: UIColor(red: 1.00, green: 0.62, blue: 0.70, alpha: 1.00)),
-                Categoria(titulo: "Diversão", descricao: "Playlist ideal para acalmar seu bebê, indicada para horários próximos ao do sono", cor: UIColor(red: 1.00, green: 0.85, blue: 0.61, alpha: 1.00)),
+    let categoria: [Categoria] = [Categoria(titulo: "Acalmar", descricao: "Playlist ideal para acalmar seu bebê, indicada para horários próximos ao do sono", cor: UIColor(red: 1.00, green: 0.62, blue: 0.70, alpha: 1.00)),
+                                  
+                Categoria(titulo: "Divertir", descricao: "Playlist ideal para acalmar seu bebê, indicada para horários próximos ao do sono", cor: UIColor(red: 1.00, green: 0.85, blue: 0.61, alpha: 1.00)),
+                                  
                 Categoria(titulo: "Soninho", descricao: "Playlist ideal para acalmar seu bebê, indicada para horários próximos ao do sono", cor: UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.00)),
+                                  
                 Categoria(titulo: "Gerais", descricao: "Playlist ideal para acalmar seu bebê, indicada para horários próximos ao do sono", cor: UIColor(red: 1.00, green: 0.75, blue: 0.65, alpha: 1.00))
                                   
     ]
@@ -59,6 +62,32 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.layer.masksToBounds = false
         
         return cell
+    }
+    
+    public func tamanhoPlaylist() -> Int{
+        return categoria.count
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "listMusic" {
+//            if let index = collectionView.indexPathsForSelectedItems {
+//                let listMusicViewController = segue.destination as! ListMusicViewController
+//
+//                listMusicViewController.imageView = categorias[index.row].titulo
+//            }
+            
+            let listMusicViewController = segue.destination as! ListMusicViewController
+            
+            guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
+            let primeiroAtr = indexPath[0]
+            
+            guard let tituloCat = collectionView.cellForItem(at: primeiroAtr) as? CollectionViewCell else { return }
+            
+            print(primeiroAtr[1])
+            listMusicViewController.image = tituloCat.title.text
+            listMusicViewController.category = primeiroAtr[1]
+        }
     }
 
 }

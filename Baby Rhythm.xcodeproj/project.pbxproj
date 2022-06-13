@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA34E1B028354A1900E82A72 /* Musica.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34E1AF28354A1900E82A72 /* Musica.swift */; };
+		CA34E1B228356B0500E82A72 /* ListMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34E1B128356B0500E82A72 /* ListMusicViewController.swift */; };
+		CA34E1B428358DF500E82A72 /* PlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34E1B328358DF500E82A72 /* PlaylistCollectionViewCell.swift */; };
+		CA7A30832856D2F3009F6D1E /* Crack Baby.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7A30822856D2F3009F6D1E /* Crack Baby.mp3 */; };
+		CA7A30872856D6DC009F6D1E /* I Will.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7A30862856D6DC009F6D1E /* I Will.mp3 */; };
+		CA7A30892856E6CA009F6D1E /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A30882856E6CA009F6D1E /* FavoriteCollectionViewCell.swift */; };
+		CA7A308B2856E7B5009F6D1E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A308A2856E7B5009F6D1E /* FavoriteViewController.swift */; };
+		CA7A308D2856FAC6009F6D1E /* Favoritos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A308C2856FAC6009F6D1E /* Favoritos.swift */; };
 		CAB1957E2832D8D30032E297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1957D2832D8D30032E297 /* AppDelegate.swift */; };
 		CAB195802832D8D30032E297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1957F2832D8D30032E297 /* SceneDelegate.swift */; };
-		CAB195822832D8D30032E297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB195812832D8D30032E297 /* ViewController.swift */; };
+		CAB195822832D8D30032E297 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB195812832D8D30032E297 /* HomeViewController.swift */; };
 		CAB195852832D8D30032E297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB195832832D8D30032E297 /* Main.storyboard */; };
 		CAB195872832D8D40032E297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB195862832D8D40032E297 /* Assets.xcassets */; };
 		CAB1958A2832D8D40032E297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB195882832D8D40032E297 /* LaunchScreen.storyboard */; };
+		CAB195962834326F0032E297 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB195952834326F0032E297 /* Categoria.swift */; };
+		CAB19598283437550032E297 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB19597283437550032E297 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA34E1AF28354A1900E82A72 /* Musica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musica.swift; sourceTree = "<group>"; };
+		CA34E1B128356B0500E82A72 /* ListMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMusicViewController.swift; sourceTree = "<group>"; };
+		CA34E1B328358DF500E82A72 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA7A30822856D2F3009F6D1E /* Crack Baby.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Crack Baby.mp3"; sourceTree = "<group>"; };
+		CA7A30862856D6DC009F6D1E /* I Will.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I Will.mp3"; sourceTree = "<group>"; };
+		CA7A30882856E6CA009F6D1E /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA7A308A2856E7B5009F6D1E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		CA7A308C2856FAC6009F6D1E /* Favoritos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favoritos.swift; sourceTree = "<group>"; };
 		CAB1957A2832D8D30032E297 /* Baby Rhythm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Baby Rhythm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB1957D2832D8D30032E297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAB1957F2832D8D30032E297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CAB195812832D8D30032E297 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CAB195812832D8D30032E297 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CAB195842832D8D30032E297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAB195862832D8D40032E297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAB195892832D8D40032E297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB1958B2832D8D40032E297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB195952834326F0032E297 /* Categoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		CAB19597283437550032E297 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +76,65 @@
 		CAB1957C2832D8D30032E297 /* Baby Rhythm */ = {
 			isa = PBXGroup;
 			children = (
-				CAB1957D2832D8D30032E297 /* AppDelegate.swift */,
-				CAB1957F2832D8D30032E297 /* SceneDelegate.swift */,
-				CAB195812832D8D30032E297 /* ViewController.swift */,
-				CAB195832832D8D30032E297 /* Main.storyboard */,
-				CAB195862832D8D40032E297 /* Assets.xcassets */,
-				CAB195882832D8D40032E297 /* LaunchScreen.storyboard */,
+				CA7A30822856D2F3009F6D1E /* Crack Baby.mp3 */,
+				CA7A30862856D6DC009F6D1E /* I Will.mp3 */,
+				CAF02532283439B200493F04 /* Views */,
+				CAF02533283439C600493F04 /* Controllers */,
+				CAF02534283439E200493F04 /* Models */,
+				CAF0253528343A0000493F04 /* Storyboards */,
+				CAF0253628343A1500493F04 /* SupportingFiles */,
 				CAB1958B2832D8D40032E297 /* Info.plist */,
 			);
 			path = "Baby Rhythm";
+			sourceTree = "<group>";
+		};
+		CAF02532283439B200493F04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAB19597283437550032E297 /* CollectionViewCell.swift */,
+				CA34E1B328358DF500E82A72 /* PlaylistCollectionViewCell.swift */,
+				CA7A30882856E6CA009F6D1E /* FavoriteCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CAF02533283439C600493F04 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CAB195812832D8D30032E297 /* HomeViewController.swift */,
+				CA34E1B128356B0500E82A72 /* ListMusicViewController.swift */,
+				CA7A308A2856E7B5009F6D1E /* FavoriteViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CAF02534283439E200493F04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAB195952834326F0032E297 /* Categoria.swift */,
+				CA34E1AF28354A1900E82A72 /* Musica.swift */,
+				CA7A308C2856FAC6009F6D1E /* Favoritos.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CAF0253528343A0000493F04 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CAB195832832D8D30032E297 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CAF0253628343A1500493F04 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CAB1957D2832D8D30032E297 /* AppDelegate.swift */,
+				CAB1957F2832D8D30032E297 /* SceneDelegate.swift */,
+				CAB195862832D8D40032E297 /* Assets.xcassets */,
+				CAB195882832D8D40032E297 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +195,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7A30872856D6DC009F6D1E /* I Will.mp3 in Resources */,
 				CAB1958A2832D8D40032E297 /* LaunchScreen.storyboard in Resources */,
 				CAB195872832D8D40032E297 /* Assets.xcassets in Resources */,
+				CA7A30832856D2F3009F6D1E /* Crack Baby.mp3 in Resources */,
 				CAB195852832D8D30032E297 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +210,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAB195822832D8D30032E297 /* ViewController.swift in Sources */,
+				CA34E1B428358DF500E82A72 /* PlaylistCollectionViewCell.swift in Sources */,
+				CAB19598283437550032E297 /* CollectionViewCell.swift in Sources */,
+				CAB195822832D8D30032E297 /* HomeViewController.swift in Sources */,
+				CA34E1B228356B0500E82A72 /* ListMusicViewController.swift in Sources */,
+				CA7A308D2856FAC6009F6D1E /* Favoritos.swift in Sources */,
+				CA7A308B2856E7B5009F6D1E /* FavoriteViewController.swift in Sources */,
+				CA7A30892856E6CA009F6D1E /* FavoriteCollectionViewCell.swift in Sources */,
+				CAB195962834326F0032E297 /* Categoria.swift in Sources */,
 				CAB1957E2832D8D30032E297 /* AppDelegate.swift in Sources */,
 				CAB195802832D8D30032E297 /* SceneDelegate.swift in Sources */,
+				CA34E1B028354A1900E82A72 /* Musica.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CMWHQAT5B4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Baby Rhythm/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -298,12 +379,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy.gfrm.Baby-Rhythm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,6 +395,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CMWHQAT5B4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Baby Rhythm/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -325,12 +407,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.ufpe.cin.academy.gfrm.Baby-Rhythm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
