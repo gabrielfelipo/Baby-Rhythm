@@ -9,10 +9,7 @@ import Foundation
 import UIKit
 
 class Favoritos {
-    var lista: Array<String>;
-    
-    init(lista:Array<String>)
-    {
-        self.lista = lista
-    }
+    static let shared: Favoritos = Favoritos()
+
+    lazy var favArray: [String] = []
 }

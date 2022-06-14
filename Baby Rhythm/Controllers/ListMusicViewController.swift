@@ -18,6 +18,7 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var playButton: UIImageView!
     @IBOutlet weak var catTitle: UILabel!
     
+    var favoriteArray = Favoritos.shared.favArray
     var playColor: UIColor?
     var player: AVAudioPlayer?
     var image: String?
@@ -55,6 +56,8 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         musicCollectionView.rightAnchor.constraint(equalTo: self.view.leftAnchor, constant: UIScreen.main.bounds.width-8).isActive = true
         musicCollectionView.topAnchor.constraint(equalTo: playButton.bottomAnchor).isActive = true
         musicCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+
         
         
     }
@@ -122,9 +125,15 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     @IBAction func fav(_ sender: UIButton) {
-        favorites.append(musicas[category ?? 0][sender.tag])
-        let favoriteViewController = FavoriteViewController()
-        favoriteViewController.favoritos.append(musicas[category ?? 0][sender.tag])
-        print(favoriteViewController.favoritos)
+        //let music = Favoritos(musicas[category ?? 0][sender.tag])
+        favoriteArray += [musicas[category ?? 0][sender.tag]]
+        Favoritos.shared.favArray = favoriteArray
+        
+        
+        // TA ESQUISITO ESSE BAGULHO AQUI Ó!! DA UMA OLHADA NAMORAL
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController")
+        self.navigationController?.present(homeVC, animated: false, completion: nil)
+        self.navigationController?.dismiss(animated: false, completion: nil)
     }
 }

@@ -27,6 +27,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
+
+        
     }
     
     
@@ -71,11 +73,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "listMusic" {
-//            if let index = collectionView.indexPathsForSelectedItems {
-//                let listMusicViewController = segue.destination as! ListMusicViewController
-//
-//                listMusicViewController.imageView = categorias[index.row].titulo
-//            }
             
             let listMusicViewController = segue.destination as! ListMusicViewController
             
@@ -84,7 +81,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             guard let tituloCat = collectionView.cellForItem(at: primeiroAtr) as? CollectionViewCell else { return }
             
-            print(primeiroAtr[1])
+            //print(primeiroAtr[1])
+            //print(segue)
+            //print(segue.destination)
+            //print(segue.identifier)
             listMusicViewController.image = tituloCat.title.text
             listMusicViewController.category = primeiroAtr[1]
         }

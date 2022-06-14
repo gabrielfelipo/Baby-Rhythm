@@ -15,14 +15,16 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var favButton: UIImageView!
     @IBOutlet weak var favoriteCollectionView: UICollectionView!
     
+    var favoriteArray = [String]()
     var player: AVAudioPlayer?
-    var favoritos: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         favoriteCollectionView.delegate = self
         favoriteCollectionView.dataSource = self
+        
+        favoriteArray = Favoritos.shared.favArray
         
         
 // TITULO
@@ -43,13 +45,13 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return favoritos.count
+        return favoriteArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let music = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCollectionCell", for: indexPath) as! FavoriteCollectionViewCell
         
-        let musica = favoritos[indexPath.row]
+        let musica = favoriteArray[indexPath.row]
         
         music.name.text = musica
         music.image.image = UIImage(named: musica)
@@ -62,13 +64,12 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         return music
     }
     @IBAction func play(_ sender: UIButton) {
-        
         if let player = player, player.isPlaying {
             player.stop()
         }
         
         else {
-            let urlString = Bundle.main.path(forResource: favoritos[sender.tag], ofType: "mp3")
+            let urlString = Bundle.main.path(forResource: favoriteArray[sender.tag], ofType: "mp3")
             do {
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
@@ -90,5 +91,4 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
         }
     }
-    
 }

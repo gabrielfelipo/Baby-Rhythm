@@ -12,7 +12,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="JbJ-uH-ee9">
             <objects>
-                <viewController id="pfH-tc-JZi" customClass="FavoriteViewController" customModule="Baby_Rhythm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteViewController" id="pfH-tc-JZi" customClass="FavoriteViewController" customModule="Baby_Rhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RN1-M6-6MD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
         <!--Home View Controller-->
         <scene sceneID="Kf2-uQ-2A8">
             <objects>
-                <viewController id="14t-o6-2mx" customClass="HomeViewController" customModule="Baby_Rhythm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="14t-o6-2mx" customClass="HomeViewController" customModule="Baby_Rhythm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Plf-bo-lsh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
