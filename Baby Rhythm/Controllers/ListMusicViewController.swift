@@ -98,6 +98,8 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         else {
             let urlString = Bundle.main.path(forResource: musicas[category ?? 0][sender.tag], ofType: "mp3")
+            print("AQUI CARAI")
+            print(Bundle.main)
             do {
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)

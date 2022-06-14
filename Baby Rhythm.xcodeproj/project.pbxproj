@@ -57,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA4BD1CE2858335F007A2932 /* Musics */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A30822856D2F3009F6D1E /* Crack Baby.mp3 */,
+				CA7A30862856D6DC009F6D1E /* I Will.mp3 */,
+			);
+			path = Musics;
+			sourceTree = "<group>";
+		};
 		CAB195712832D8D30032E297 = {
 			isa = PBXGroup;
 			children = (
@@ -76,8 +85,7 @@
 		CAB1957C2832D8D30032E297 /* Baby Rhythm */ = {
 			isa = PBXGroup;
 			children = (
-				CA7A30822856D2F3009F6D1E /* Crack Baby.mp3 */,
-				CA7A30862856D6DC009F6D1E /* I Will.mp3 */,
+				CA4BD1CE2858335F007A2932 /* Musics */,
 				CAF02532283439B200493F04 /* Views */,
 				CAF02533283439C600493F04 /* Controllers */,
 				CAF02534283439E200493F04 /* Models */,
