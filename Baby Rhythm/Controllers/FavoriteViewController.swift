@@ -15,16 +15,18 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var favButton: UIImageView!
     @IBOutlet weak var favoriteCollectionView: UICollectionView!
     
-    var favoriteArray = [String]()
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // OBSERVER
+        NotificationCenter.default.addObserver(self, selector: #selector(doINeedUpdate(_:)), name: Notification.Name("reloadFav"), object: nil)
+        
         // Do any additional setup after loading the view.
         favoriteCollectionView.delegate = self
         favoriteCollectionView.dataSource = self
         
-        favoriteArray = Favoritos.shared.favArray
         
         
 // TITULO
@@ -43,15 +45,20 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         
     }
     
+    @objc func doINeedUpdate(_ notification: Notification) {
+        favoriteCollectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return favoriteArray.count
+        return Favoritos.shared.favArray.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let music = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCollectionCell", for: indexPath) as! FavoriteCollectionViewCell
         
-        let musica = favoriteArray[indexPath.row]
+        let musica = Favoritos.shared.favArray[indexPath.row]
         
         music.name.text = musica
         music.image.image = UIImage(named: musica)
@@ -64,12 +71,15 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         return music
     }
     @IBAction func play(_ sender: UIButton) {
+        guard let musicPlaying = favoriteCollectionView.cellForItem(at: [0,sender.tag]) as? FavoriteCollectionViewCell else { return }
         if let player = player, player.isPlaying {
             player.stop()
+            musicPlaying.name.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
         }
         
         else {
-            let urlString = Bundle.main.path(forResource: favoriteArray[sender.tag], ofType: "mp3")
+            favoriteCollectionView.reloadData()
+            let urlString = Bundle.main.path(forResource: Favoritos.shared.favArray[sender.tag], ofType: "mp3")
             do {
                 try AVAudioSession.sharedInstance().setMode(.default)
                 try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
@@ -85,6 +95,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
                 
                 player.play()
+                musicPlaying.name.textColor = UIColor(red: 1.00, green: 0.62, blue: 0.70, alpha: 1.00)
             }
             catch {
                 print("deu pau")

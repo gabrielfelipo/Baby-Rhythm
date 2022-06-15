@@ -23,6 +23,7 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
     var player: AVAudioPlayer?
     var image: String?
     var category: Int?
+    var playingMusic: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +63,7 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     
-    let musicas = [["Crack Baby"],[],["I Will"],[]]
-    var favorites: [String] = ["Crack Baby"]
+    let musicas = [["Crack Baby","I Will"],[],[],[]]
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,6 +78,11 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         let musica = musicas[category ?? 0][indexPath.row]
         
         music.nome.text = musica
+        
+        if Favoritos.shared.favArray.contains(music.nome.text ?? "algo") {
+            music.heart.image = UIImage(named: "fullPinkHeart")
+        }
+        
         music.imageView.image = UIImage(named: musica)
         
         music.playButton.tag = indexPath.item
@@ -91,12 +96,18 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @IBAction func play(_ sender: UIButton) {
+        guard let musicPlaying = musicCollectionView.cellForItem(at: [0,sender.tag]) as? PlaylistCollectionViewCell else { return }
+        
         if let player = player, player.isPlaying {
             player.stop()
-            
-            playColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
+            let lastPlaying = musicCollectionView.cellForItem(at: [0,playingMusic ?? 0]) as? PlaylistCollectionViewCell
+            lastPlaying?.nome.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
+            if musicPlaying != lastPlaying {
+                play(sender)
+            }
         }
         else {
+            print("chegou")
             let urlString = Bundle.main.path(forResource: musicas[category ?? 0][sender.tag], ofType: "mp3")
             do {
                 try AVAudioSession.sharedInstance().setMode(.default)
@@ -111,12 +122,10 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
                 guard let player = player else {
                     return
                 }
-                playColor = UIColor(red: 1.00, green: 0.85, blue: 0.61, alpha: 1.00)
-                musicCollectionView.cellForItem(at: [0,sender.tag])
-                
-                //var cell = musicCollectionView.cellForItem(at: [0,0])
                 
                 player.play()
+                playingMusic = sender.tag
+                musicPlaying.nome.textColor = UIColor(red: 1.00, green: 0.62, blue: 0.70, alpha: 1.00)
             }
             catch {
                 print("deu pau")
@@ -125,15 +134,21 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     @IBAction func fav(_ sender: UIButton) {
-        //let music = Favoritos(musicas[category ?? 0][sender.tag])
-        favoriteArray += [musicas[category ?? 0][sender.tag]]
-        Favoritos.shared.favArray = favoriteArray
         
+        guard let musicPlaying = musicCollectionView.cellForItem(at: [0,sender.tag]) as? PlaylistCollectionViewCell else { return }
         
-        // TA ESQUISITO ESSE BAGULHO AQUI Ó!! DA UMA OLHADA NAMORAL
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "FavoriteViewController")
-        self.navigationController?.present(homeVC, animated: false, completion: nil)
-        self.navigationController?.dismiss(animated: false, completion: nil)
+        if Favoritos.shared.favArray.contains(musicPlaying.nome.text ?? "algo") {
+            musicPlaying.heart.image = UIImage(named: "PinkHeart")
+            let indexFav = Favoritos.shared.favArray.firstIndex(of: musicPlaying.nome.text ?? "")
+            Favoritos.shared.favArray.remove(at: indexFav ?? 0)
+        }
+        
+        else {
+            musicPlaying.heart.image = UIImage(named: "fullPinkHeart")
+            Favoritos.shared.favArray += [musicas[category ?? 0][sender.tag]]
+        }
+        
+        // SENDER
+        NotificationCenter.default.post(name: Notification.Name("reloadFav"), object: nil)
     }
 }
