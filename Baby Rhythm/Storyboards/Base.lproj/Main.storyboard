@@ -74,6 +74,15 @@
                                                         <action selector="play:" destination="pfH-tc-JZi" eventType="touchUpInside" id="aGx-h5-edC"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btF-t3-wiQ" userLabel="removeButton">
+                                                    <rect key="frame" x="358" y="49" width="32" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                    <connections>
+                                                        <action selector="Fav:" destination="pfH-tc-JZi" eventType="touchUpInside" id="aZp-1Q-ioi"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,6 +92,7 @@
                                             <outlet property="image" destination="jvS-dt-mTv" id="jSc-es-Hpt"/>
                                             <outlet property="name" destination="bSp-4K-HyK" id="WYi-eT-44T"/>
                                             <outlet property="playButton" destination="kzT-7w-OJ5" id="G8F-rD-ePj"/>
+                                            <outlet property="removeButton" destination="btF-t3-wiQ" id="KiT-IY-XNd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

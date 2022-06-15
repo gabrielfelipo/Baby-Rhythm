@@ -16,12 +16,14 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var favoriteCollectionView: UICollectionView!
     
     var player: AVAudioPlayer?
+    var playingMusic: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // OBSERVER
         NotificationCenter.default.addObserver(self, selector: #selector(doINeedUpdate(_:)), name: Notification.Name("reloadFav"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopMusic(_:)), name: Notification.Name("isPlaying"), object: nil)
         
         // Do any additional setup after loading the view.
         favoriteCollectionView.delegate = self
@@ -66,15 +68,29 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         music.playButton.tag = indexPath.item
         music.playButton.addTarget(self, action: #selector(self.play), for: .touchUpInside)
         
+        music.removeButton.tag = indexPath.item
+        music.removeButton.addTarget(self, action: #selector(self.Fav), for: .touchUpInside)
+        
         music.arrumalayout()
         
         return music
     }
+    
+    @objc func stopMusic(_ notification: Notification) {
+        player?.stop()
+        guard let musicStop = favoriteCollectionView.cellForItem(at: [0,playingMusic ?? 0]) as? FavoriteCollectionViewCell else { return }
+        musicStop.name.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
+    }
+    
     @IBAction func play(_ sender: UIButton) {
         guard let musicPlaying = favoriteCollectionView.cellForItem(at: [0,sender.tag]) as? FavoriteCollectionViewCell else { return }
         if let player = player, player.isPlaying {
             player.stop()
-            musicPlaying.name.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
+            let lastPlaying = favoriteCollectionView.cellForItem(at: [0,playingMusic ?? 0]) as? FavoriteCollectionViewCell
+            lastPlaying?.name.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
+            if musicPlaying != lastPlaying {
+                play(sender)
+            }
         }
         
         else {
@@ -96,10 +112,35 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
                 
                 player.play()
                 musicPlaying.name.textColor = UIColor(red: 1.00, green: 0.62, blue: 0.70, alpha: 1.00)
+                playingMusic = sender.tag
+                
+                //SEND TO LIST VIEW CONTROLLER
+                NotificationCenter.default.post(name: Notification.Name("isPlayingFav"), object: nil)
             }
             catch {
                 print("deu pau")
             }
         }
     }
+    
+    @IBAction func Fav(_ sender: UIButton) {
+        guard let musicPlaying = favoriteCollectionView.cellForItem(at: [0,sender.tag]) as? FavoriteCollectionViewCell else { return }
+        let indexFav = Favoritos.shared.favArray.firstIndex(of: musicPlaying.name.text ?? "")
+        Favoritos.shared.favArray.remove(at: indexFav ?? 0)
+        
+    
+        //Remove pink collor of label and stop music
+        let lastPlaying = favoriteCollectionView.cellForItem(at: [0,playingMusic ?? 0]) as? FavoriteCollectionViewCell
+        
+        if playingMusic == sender.tag {
+            player?.stop()
+            lastPlaying?.name.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
+        }
+        
+        //SEND TO LIST VIEW CONTROLLER
+        NotificationCenter.default.post(name: Notification.Name("favRemoved"), object: nil)
+        
+        favoriteCollectionView.reloadData()
+    }
+    
 }

@@ -27,10 +27,15 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         musicCollectionView.delegate = self
         musicCollectionView.dataSource = self
         
+        // OBSERVER
+        NotificationCenter.default.addObserver(self, selector: #selector(stopMusic(_:)), name: Notification.Name("isPlayingFav"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(removeFav(_:)), name: Notification.Name("favRemoved"), object: nil)
         
 //  CAPA
         imageView.image = UIImage(named: image ?? "")
@@ -83,6 +88,9 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
             music.heart.image = UIImage(named: "fullPinkHeart")
         }
         
+        else {
+            music.heart.image = UIImage(named: "PinkHeart")
+        }
         music.imageView.image = UIImage(named: musica)
         
         music.playButton.tag = indexPath.item
@@ -93,6 +101,17 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
         music.arrumalayout()
         
         return music
+    }
+    
+    @objc func removeFav(_ notification: Notification) {
+        musicCollectionView.reloadData()
+        
+    }
+    
+    @objc func stopMusic(_ notification: Notification) {
+        player?.stop()
+        guard let musicStop = musicCollectionView.cellForItem(at: [0,playingMusic ?? 0]) as? PlaylistCollectionViewCell else { return }
+        musicStop.nome.textColor = UIColor(red: 0.00, green: 0, blue: 0, alpha: 1.00)
     }
     
     @IBAction func play(_ sender: UIButton) {
@@ -107,7 +126,6 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
             }
         }
         else {
-            print("chegou")
             let urlString = Bundle.main.path(forResource: musicas[category ?? 0][sender.tag], ofType: "mp3")
             do {
                 try AVAudioSession.sharedInstance().setMode(.default)
@@ -126,6 +144,7 @@ class ListMusicViewController: UIViewController, UICollectionViewDelegate, UICol
                 player.play()
                 playingMusic = sender.tag
                 musicPlaying.nome.textColor = UIColor(red: 1.00, green: 0.62, blue: 0.70, alpha: 1.00)
+                NotificationCenter.default.post(name: Notification.Name("isPlaying"), object: nil)
             }
             catch {
                 print("deu pau")

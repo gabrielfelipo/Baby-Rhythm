@@ -14,6 +14,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var heart: UIImageView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     
     func arrumalayout() {
         image.translatesAutoresizingMaskIntoConstraints = false
